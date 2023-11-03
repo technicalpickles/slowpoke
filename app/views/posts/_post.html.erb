@@ -2,12 +2,31 @@
   <h2 class="font-bold text-2xl mb-2">
     <%= link_to post.title, post, class: "text-blue-600 hover:underline" %>
   </h2>
-  <p class="text-gray-700"><%= post.body %></p>
+  <p class="text-gray-700">
+    <%= post.body %>
+  </p>
+  
+  <%# number of words in body%>
+  <p class="text-right text-blue-600"><%= post.body.split.size %> words</p>
 
-  <% if action_name != "show" %>
+  <% if action_name == "show" %>
     <div class="mt-4">
       <%= link_to "Show", post, class: "rounded-lg py-2 px-4 bg-blue-500 text-white inline-block font-medium mr-2" %>
       <%= link_to "Edit", edit_post_path(post), class: "rounded-lg py-2 px-4 bg-blue-500 text-white inline-block font-medium" %>
     </div>
   <% end %>
+
+  <%# Comments Section %>
+  <% case action_name %>
+  <% when "index" %>
+    <p class="text-right text-blue-600"><%= link_to "#{post.comments.size} comments", post %></p>
+  <% when "show" %>
+    <% post.comments.each do |comment| %>
+      <div class="mt-4 p-4 bg-gray-100 rounded-lg">
+        <p class="font-bold"><%= comment.author %></p>
+        <p><%= comment.body %></p>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
