@@ -1,24 +1,20 @@
-# README
+# slowpoke
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails app designed to be slow. Useful for learning, testing performance tools, etc.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## Endpoints
 
-* Configuration
+- `/`: posts and comments with N+1 and without pagination 
+- `/slows`: list of slow things
+    - `/slows/time`: sleep for awhile
+    - `/slows/space`: allocate a bunch of memory
 
-* Database creation
+## Setup
 
-* Database initialization
+Run:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```shell
+bin/setup
+```
