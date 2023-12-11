@@ -1,12 +1,14 @@
 class Slow
 	class_attribute :pokes
 	self.pokes = {
-		time: lambda do
-			sleep(rand(0.1..20))
+		time: lambda do |n|
+      n = n ? Integer(n) :  rand(0.1..20)
+			sleep(n)
 		end,
 
 		space: lambda do
-			a = []; (rand(100..100_000_000)).times{a << 'a'}
+      n = n ? Integer(n) : rand(100..100_000_000)
+			a = []; (rand(n)).times{a << 'a'}
 		end
 	}
 end

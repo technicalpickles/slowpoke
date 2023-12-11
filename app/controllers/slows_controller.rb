@@ -5,6 +5,6 @@ class SlowsController < ApplicationController
 
   def show
     @poke = Slow.pokes[params[:id].to_sym]
-    @poke.call
+    @poke.call(params[:n])
   end
 end
